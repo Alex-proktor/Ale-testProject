@@ -34,8 +34,8 @@ def send():
 
 status = True
 sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+sock.connect((config.host, config.port))
 while True:
-    sock.connect((config.host, config.port))
     protocol.send(sock, input())
     data = protocol.recv(sock)
     print(data)
