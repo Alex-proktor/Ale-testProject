@@ -20,6 +20,7 @@
 # -*- coding: utf-8 -*-
 # !/usr/bin/env python3
 
+from itertools import chain
 import socket
 import threading
 from os import listdir, path
@@ -43,8 +44,15 @@ def handle_commands(connection, command, string):
         new_string = ''
         for s in string[::-1]:
             new_string += s
-
         protocol.send(connection, new_string)
+
+    elif command == "t2":
+        """ replace even characters - odd characters """
+        string = ' '.join(string)
+        string = list(chain(*(x for x in zip(string[1::2], string[::2]))))
+        string = ''.join(string)
+        protocol.send(connection, string)
+
     else:
         protocol.send(connection, command)
 
