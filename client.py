@@ -35,11 +35,12 @@ def send():
 status = True
 sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 sock.connect((config.host, config.port))
-while True:
-    protocol.send(sock, input())
-    data = protocol.recv(sock)
-    print(data)
+protocol.send(sock, input())
+data = protocol.recv(sock)
+# while True:
+print(data)
 
+sock.close()
 
-    if status == False:
-        sock.close()
+if status == False:
+    sock.close()

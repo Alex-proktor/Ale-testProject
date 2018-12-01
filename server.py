@@ -37,10 +37,9 @@ def dl_status_checker(thread, connection):
 
 
 def handle_commands(connection, command, string):
-    print(command)
     if command == "t1":
-        # flip string
-        string = ''.join(reversed(string))
+        """ flip string """
+        string = ' '.join(string)
         new_string = ''
         for s in string[::-1]:
             new_string += s
